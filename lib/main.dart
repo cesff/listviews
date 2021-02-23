@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+List<Color> colors = [
+  Colors.red,
+  Colors.amber,
+  Colors.lightGreenAccent,
+  Colors.lightBlue,
+  Colors.pink,
+  Colors.deepOrange,
+];
+List<String> days = [
+  'Senin',
+  'Selasa',
+  'Rabu',
+  'Kamis',
+  'Jumat',
+  'Sabtu',
+];
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  List<Color> colors = [
-    Colors.black,
-    Colors.amber,
-    Colors.red,
-    Colors.purple,
-    Colors.green,
-    Colors.blue,
-    Colors.orange,
-    Colors.indigo,
-    Colors.brown,
-    Colors.grey,
-  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,89 +30,167 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.indigo,
-          title: Text('ListView'),
+          title: Text('Mobile App'),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: 200,
-                    child: (ListView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 200,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        height: 200,
+                        width: 180,
+                        child: Card(
+                          color: Colors.blueGrey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              new SvgPicture.asset(
+                                'assets/icons/ribs.svg',
+                                height: 100,
+                                width: 100,
+                                allowDrawingOutsideViewBox: true,
+                              ),
+                              new Text('Meat',
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.white)),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        height: 200,
+                        width: 180,
+                        child: Card(
+                          color: Colors.blueGrey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              new SvgPicture.asset(
+                                'assets/icons/success.svg',
+                                height: 100,
+                                width: 100,
+                                allowDrawingOutsideViewBox: true,
+                              ),
+                              new Text('Location',
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.white)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                new Center(
+                  child: Text('List Menu',
+                      style: TextStyle(fontSize: 20, color: Colors.black)),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 10),
+                  height: 240,
+                  width: 400,
+                  margin: EdgeInsets.all(6),
+                  child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        Container(
-                          width: 100,
-                          color: Colors.red,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.amber,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.black,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.blue,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.orange,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.green,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.pink,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.purple,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.yellow,
-                        ),
-                        Container(
-                          width: 100,
-                          color: Colors.brown,
-                        ),
-                      ],
-                    )),
-                  ),
-                  Container(
-                    height: 200,
-                    width: 300,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: colors.length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: 400,
-                            height: 200,
+                      itemCount: colors.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          width: 180,
+                          margin: EdgeInsets.all(2),
+                          child: Card(
                             color: colors[index],
-                          );
-                        }),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Center(
+                                  child: Text(days[index],
+                                      style: TextStyle(fontSize: 20)),
+                                ),
+                                SvgPicture.asset(
+                                  'assets/icons/menu.svg',
+                                  height: 140,
+                                  width: 150,
+                                  alignment: Alignment.bottomCenter,
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
+                ),
+                Container(
+                  height: 150,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        height: 100,
+                        width: 120,
+                        child: Card(
+                          color: Colors.blueGrey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              new SvgPicture.asset(
+                                'assets/icons/ribs.svg',
+                                height: 50,
+                                width: 50,
+                                allowDrawingOutsideViewBox: true,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        height: 100,
+                        width: 120,
+                        child: Card(
+                          color: Colors.blueGrey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              new SvgPicture.asset(
+                                'assets/icons/success.svg',
+                                height: 50,
+                                width: 50,
+                                allowDrawingOutsideViewBox: true,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        height: 100,
+                        width: 120,
+                        child: Card(
+                          color: Colors.blueGrey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              new SvgPicture.asset(
+                                'assets/icons/menu.svg',
+                                height: 50,
+                                width: 50,
+                                allowDrawingOutsideViewBox: true,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Container(
-                    height: 200,
-                    child: ListView.builder(
-                        itemCount: colors.length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: 100,
-                            height: 200,
-                            color: colors[index],
-                          );
-                        }),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
